@@ -14,4 +14,4 @@ jobs:
       - name: Migrate
         run: npx migrate-mongo up
         env:
-          MONGO_URL: "${{ secrets.MONGO_URL }}"
+          MONGO_URL: '${{ secrets.MONGO_URL }}'
