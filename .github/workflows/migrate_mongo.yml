@@ -10,7 +10,7 @@ jobs:
     environment: staging
     steps:
       - name: Install migrate-mongo
-        run: yarn global add migrate-mongo --prefix /usr/local
+        run: npm install -g migrate-mongo
       - name: Migrate
         run: migrate-mongo up
         env:
