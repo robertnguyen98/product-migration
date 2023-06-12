@@ -8,10 +8,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - name: Install migrate-mongo
         run: npm install -g migrate-mongo
-      - name: Initialize
-        run: migrate-mongo init
       - name: Migrate
         run: migrate-mongo up
         env:
