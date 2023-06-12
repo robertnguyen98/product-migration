@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Install migrate-mongo
         run: npm install -g migrate-mongo
-      - name: Migrate
+      - name: Migrate 123
         run: cd .. && migrate-mongo up
         env:
           MONGO_URL: "${{ secrets.MONGO_URL }}"
