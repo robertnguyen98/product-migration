@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install migrate-mongo
+        working-directory: ./
         run: npm install -g migrate-mongo
       - name: Migrate
         run: cd .. && migrate-mongo up
