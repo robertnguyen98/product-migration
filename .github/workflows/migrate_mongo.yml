@@ -10,8 +10,10 @@ jobs:
     environment: staging
     steps:
       - name: Install migrate-mongo
+        working-directory: "./"
         run: npm install -g migrate-mongo
       - name: Migrate 123
-        run: cd .. && migrate-mongo up
+        working-directory: "./"
+        run: migrate-mongo up
         env:
           MONGO_URL: "${{ secrets.MONGO_URL }}"
