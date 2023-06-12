@@ -7,7 +7,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: staging
+    environment: production
     steps:
       - name: Install migrate-mongo
         run: npm install -g migrate-mongo
