@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "migrate-mongo": "^10.0.0"
+  }
+}

@@ -1,0 +1,16 @@
+name: Migrate MongoDb
+
+on:
+  push:
+    branches: [master, staging]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install migrate-mongo
+        run: yarn install
+      - name: Migrate
+        run: migrate-mongo up
+        env:
+          MONGO_URL: "${{ secrets.MONGO_URL }}"
