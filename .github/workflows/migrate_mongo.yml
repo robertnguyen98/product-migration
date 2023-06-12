@@ -9,9 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install migrate-mongo
-        working-directory: ./
         run: npm install -g migrate-mongo
+      - name: Initialize
+        run: migrate-mongo init
       - name: Migrate
-        run: cd .. && migrate-mongo up
+        run: migrate-mongo up
         env:
           MONGO_URL: '${{ secrets.MONGO_URL }}'
