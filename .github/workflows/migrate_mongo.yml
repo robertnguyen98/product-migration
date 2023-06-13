@@ -7,12 +7,11 @@ on:
 jobs:
   migrate-mongo-production:
     runs-on: ubuntu-latest
-    environment: production
     steps:
       - uses: actions/checkout@v3
       - name: Install migrate-mongo
         run: npm install -g migrate-mongo
-      - name: Migrate
+      - name: Migrat
         run: migrate-mongo up
         env:
           MONGO_URL: "${{ secrets.MONGO_URL }}"
