@@ -5,7 +5,7 @@ on:
     branches: [main, staging]
 
 jobs:
-  build:
+  migrate-mongo-production:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -14,4 +14,4 @@ jobs:
       - name: Migrate
         run: migrate-mongo up
         env:
-          MONGO_URL: '${{ secrets.MONGO_URL }}'
+          MONGO_URL: "${{ secrets.MONGO_URL }}"
