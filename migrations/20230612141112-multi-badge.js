@@ -6,10 +6,10 @@ module.exports = {
     return await db.collection("productmodels").updateMany({}, [
       {
         $set: {
-          priceBadge: { $arrayElemAt: ["$priceBadges", 0] },
+          priceBadges: ["$priceBadge"],
         },
       },
-      { $unset: ["priceBadges"] },
+      { $unset: ["priceBadge"] },
     ]);
   },
 
