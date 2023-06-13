@@ -8,11 +8,11 @@ jobs:
   migrate-mongo-production:
     runs-on: ubuntu-latest
     environment:
-      name: ${{ github.ref }}
+      name: ${{ github.ref_name }}
     steps:
       - uses: actions/checkout@v3
       - name: Install migrate-mongo
-        run: echo ${{ github.ref }}
+        run: echo ${{ github.ref_name }}
       - name: Install migrate-mongo
         run: npm install -g migrate-mongo
       - name: Migrat
