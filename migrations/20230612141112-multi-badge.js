@@ -1,29 +1,37 @@
 module.exports = {
-  async up(db, client) {
-    // TODO write your migration here.
-    // See https://github.com/seppevs/migrate-mongo/#creating-a-new-migration-script
-    // Example:
+  async up(db) {
     return await db.collection("productmodels").updateMany({}, [
       {
         $set: {
-          priceBadge: { badgeId: "" },
+          priceBadges: {
+            $cond: {
+              if: { $eq: ["$priceBadge.badgeId", ""] },
+              then: [],
+              else: ["$priceBadge"],
+            },
+          },
         },
       },
-      { $unset: ["priceBadges"] },
+      // { $unset: ["priceBadge"] },
     ]);
   },
 
-  async down(db, client) {
-    // TODO write the statements to rollback your migration (if possible)
-    // Example:
-    // await db.collection('albums').updateOne({artist: 'The Beatles'}, {$set: {blacklisted: false}});
+  async down(db) {
     return await db.collection("productmodels").updateMany({}, [
       {
         $set: {
-          priceBadge: { $arrayElemAt: ["$priceBadges", 0] },
+          priceBadge: {
+            $cond: {
+              if: { $not: { $arrayElemAt: ["$priceBadges", 0] } },
+              then: {
+                badgeId: "",
+              },
+              else: { $arrayElemAt: ["$priceBadges", 0] },
+            },
+          },
         },
       },
-      { $unset: ["priceBadges"] },
+      // { $unset: ["priceBadges"] },
     ]);
   },
 };
